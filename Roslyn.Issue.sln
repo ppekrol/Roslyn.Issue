@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{95FCE788-9547-4D17-BF1E-2603F7731A73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9BFFEFF7-FE65-42BC-94AF-068821CA80A2}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Roslyn.Issue", "src\Roslyn.Issue\Roslyn.Issue.xproj", "{F256EFCA-756E-4BF1-A8C1-86234D9F8688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F256EFCA-756E-4BF1-A8C1-86234D9F8688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F256EFCA-756E-4BF1-A8C1-86234D9F8688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F256EFCA-756E-4BF1-A8C1-86234D9F8688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F256EFCA-756E-4BF1-A8C1-86234D9F8688}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F256EFCA-756E-4BF1-A8C1-86234D9F8688} = {95FCE788-9547-4D17-BF1E-2603F7731A73}
+	EndGlobalSection
+EndGlobal
