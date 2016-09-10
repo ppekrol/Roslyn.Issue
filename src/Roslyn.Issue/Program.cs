@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CSharp.RuntimeBinder;
@@ -17,7 +18,8 @@ namespace Roslyn.Issue
             MetadataReference.CreateFromFile(typeof(object).GetTypeInfo().Assembly.Location),
             MetadataReference.CreateFromFile(typeof(Enumerable).GetTypeInfo().Assembly.Location),
             MetadataReference.CreateFromFile(typeof(RuntimeBinderException).GetTypeInfo().Assembly.Location),
-            MetadataReference.CreateFromFile(typeof(System.Runtime.CompilerServices.DynamicAttribute).GetTypeInfo().Assembly.Location)
+            MetadataReference.CreateFromFile(typeof(System.Runtime.CompilerServices.DynamicAttribute).GetTypeInfo().Assembly.Location),
+            MetadataReference.CreateFromFile(typeof(ExpressionType).GetTypeInfo().Assembly.Location),
         };
 
         public static void Main(string[] args)
@@ -49,22 +51,19 @@ namespace Roslyn.Issue
 
             if (result.Success == false)
             {
-                if (result.Success == false)
-                {
-                    IEnumerable<Diagnostic> failures = result.Diagnostics.Where(diagnostic =>
-                     diagnostic.IsWarningAsError ||
-                     diagnostic.Severity == DiagnosticSeverity.Error);
+                IEnumerable<Diagnostic> failures = result.Diagnostics.Where(diagnostic =>
+                 diagnostic.IsWarningAsError ||
+                 diagnostic.Severity == DiagnosticSeverity.Error);
 
-                    var sb = new StringBuilder();
-                    sb.AppendLine();
-                    sb.AppendLine(code.ToString());
-                    sb.AppendLine();
+                var sb = new StringBuilder();
+                sb.AppendLine();
+                sb.AppendLine(code.ToString());
+                sb.AppendLine();
 
-                    foreach (var diagnostic in failures)
-                        sb.AppendLine(diagnostic.ToString());
+                foreach (var diagnostic in failures)
+                    sb.AppendLine(diagnostic.ToString());
 
-                    throw new InvalidOperationException(sb.ToString());
-                }
+                throw new InvalidOperationException(sb.ToString());
             }
 
             Console.WriteLine("Compiled. Press any key to exit...");
